@@ -14,7 +14,7 @@
 !.gitattributes
 !.gitcompletion
 !.gitconfig
-!.hushloging
+!.hushlogin
 !.inputrc
 !.vimrc
 !.bin/

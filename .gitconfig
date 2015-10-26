@@ -1,0 +1,51 @@
+[user]
+  name = Russ Bradberry
+  email = rbradberry@gmail.com
+
+[color]
+  ui = always
+  status = auto
+  branch = auto
+  diff = auto
+
+[core]
+  excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
+
+[core]
+  whitespace = trailing-space,space-before-tab
+
+[alias]
+  br = branch
+  ci = commit -am
+  co = checkout
+  up = pull
+  p = push
+  st = status -s
+  stno = status -uno
+  df = diff --color --color-words --abbrev
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+
+[merge]
+  log = true
+[url "git@github.com:"]
+  insteadOf = "gh:"
+  pushInsteadOf = "github:"
+  pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+  insteadOf = "github:"
+[url "git@gist.github.com:"]
+  insteadOf = "gst:"
+  pushInsteadOf = "gist:"
+  pushInsteadOf = "git://gist.github.com/"
+[url "git://gist.github.com/"]
+  insteadOf = "gist:"
+
+# Any GitHub repo with my username should be checked out r/w by default
+# http://rentzsch.tumblr.com/post/564806957/public-but-hackable-git-submodules
+[url "git@github.com:devdazed/"]
+  insteadOf = "git://github.com/devdazed/"
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
