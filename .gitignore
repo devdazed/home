@@ -1,0 +1,20 @@
+# Ignore everything by default
+*
+
+# Except these
+!.gitignore
+!.ackrc
+!.aliases
+!.bash_profile
+!.bash_prompt
+!.bashrc
+!.exports
+!.functions
+!.gemrc
+!.gitattributes
+!.gitcompletion
+!.gitconfig
+!.hushloging
+!.inputrc
+!.vimrc
+!.bin/
