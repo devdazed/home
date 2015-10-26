@@ -19,3 +19,4 @@
 !.vimrc
 !.bin/
 !.chef/knife.rb
+!.ssh/config
