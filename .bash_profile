@@ -1,6 +1,6 @@
 # Load ~/.extra, ~/.bash_prompt, ~/.exports, ~/.aliases and ~/.functions
 # ~/.extra can be used for settings you don’t want to commit
-for file in ~/.{secrets,bash_prompt,exports,aliases,functions,gitcompletion}; do
+for file in ~/.{secrets,bash_prompt,exports,aliases,functions,gitcompletion,autoenv}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
@@ -46,3 +46,5 @@ complete -W "NSGlobalDomain" defaults
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
 
+
+source /usr/local/lib/dnx/bin/dnvm.sh

@@ -1,36 +1,7 @@
-# @gf3’s Sexy Bash Prompt, inspired by “Extravagant Zsh Prompt”
-# Shamelessly copied from https://github.com/gf3/dotfiles
-# Screenshot: http://i.imgur.com/s0Blh.png
+function _update_ps1() {
+    PS1="$(~/.powerline-shell.py $? 2> /dev/null)"
+}
 
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-  export TERM=gnome-256color
-elif infocmp xterm-256color >/dev/null 2>&1; then
-  export TERM=xterm-256color
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
-
-current_branch(){
-  git branch 2>/dev/null| sed -n '/^\*/s/^\* //p'
-}
-
-colored_branch(){
-  if [ -n current_branch ]; then
-    git diff --quiet 2>/dev/null >&2 && tput setaf 2 || tput setaf 1
-  echo -n $(current_branch)
-    tput sgr0
-  fi
-}
-
-function simplify_dir {
-    local PREFIX
-    if [[ $PWD == "$HOME"* ]]; then
-        PREFIX=${HOME%/}
-        echo "~${PWD##"$PREFIX"}"
-    else
-        echo "$PWD"
-    fi
-}
-
-shopt -s promptvars
-#PS1='\[\033[32m\]\n\u@\h\[\033[00m\]: \[\033[36m\]\w ($(colored_branch)\[\033[36m\]) \[\033[00m\]\n$ '
-
-PS1='\[\033[32m\]\n\u@\h\[\033[00m\]: \[\033[36m\] $(simplify_dir) ($(colored_branch)\[\033[36m\]) \[\033[00m\]\n$ '

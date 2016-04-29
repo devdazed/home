@@ -1,0 +1,20 @@
+function _autoenv() {
+  if [[ "${PWD##$HOME/}" = Projects/*/* ]]; then
+    # if we are in a project, check to see if the virtualenv
+    # exists and source it in.  This assumes that the virtualenv
+    # shares the same name as the project directory
+    if [[ -d "$HOME/.virtualenv/${PWD##*/}" ]]; then
+      source "$HOME/.virtualenv/${PWD##*/}/bin/activate"
+    fi
+  else
+    # if we are not in a project and we are in a virtualenv then 
+    # we want to deactivate it
+    if [[ "$VIRTUAL_ENV" ]]; then
+      deactivate
+    fi
+  fi
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_autoenv; $PROMPT_COMMAND"
+fi
